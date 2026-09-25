@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Water Refilling Station Queue</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Water Refilling Station</h1>
+        <p>Queue and Service Monitoring</p>
+    </header>
+
+    <main class="dashboard">
+
+        <section class="status-card">
+            <h2>Waiting Gallons</h2>
+            <p id="waitingGallons">--</p>
+            <span>Gallons</span>
+        </section>
+
+        <section class="status-card">
+            <h2>Estimated Waiting Time</h2>
+            <p id="estimatedTime">--</p>
+            <span>Minutes</span>
+        </section>
+
+        <section class="status-card">
+            <h2>Service Status</h2>
+            <p id="serviceStatus">Loading...</p>
+        </section>
+
+        <section class="updated-card">
+            <h3>Last Updated</h3>
+            <p id="updatedAt">Loading...</p>
+        </section>
+
+        <p id="connectionStatus">Connecting to database...</p>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
