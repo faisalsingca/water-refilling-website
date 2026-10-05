@@ -1,51 +1,64 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Water Refilling Station Queue</title>
-
+    <meta name="theme-color" content="#f3f8ff">
+    <title>Water Station Queue</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <header>
-        <h1>Water Refilling Station</h1>
-        <p>Queue and Service Monitoring</p>
-    </header>
-
     <main class="dashboard">
+        <header class="page-header">
+            <div>
+                <h1>Water Station Queue</h1>
+                <p>Check before you walk over</p>
+            </div>
+            <span class="pill" id="connectionStatus" role="status" aria-live="polite">Connecting</span>
+        </header>
 
-        <section class="status-card">
-            <h2>Waiting Gallons</h2>
-            <p id="waitingGallons">--</p>
-            <span>Gallons</span>
+        <section class="hero" aria-labelledby="waitHeading">
+            <h2 id="waitHeading">Estimated waiting time</h2>
+            <div class="tank" role="img" aria-label="Estimated waiting time">
+                <div class="water" aria-hidden="true">
+                    <svg class="wave" viewBox="0 0 440 16" preserveAspectRatio="none" aria-hidden="true">
+                        <path fill="#7fbcff" d="M0 8Q27.5 0 55 8T110 8T165 8T220 8T275 8T330 8T385 8T440 8V16H0Z"/>
+                    </svg>
+                </div>
+                <div class="read" aria-live="polite" aria-atomic="true">
+                    <span class="number" id="estimatedTime">--</span>
+                    <span class="unit">minutes</span>
+                </div>
+            </div>
+            <p class="hero-message">Plan your visit</p>
+            <p class="hero-sub">See the latest queue and service information below.</p>
         </section>
 
-        <section class="status-card">
-            <h2>Estimated Waiting Time</h2>
-            <p id="estimatedTime">--</p>
-            <span>Minutes</span>
+        <section class="details" aria-label="Station details">
+            <div class="row">
+                <span>Waiting gallons</span>
+                <strong><span id="waitingGallons">--</span> gallons</strong>
+            </div>
+            <div class="row">
+                <span>Service status</span>
+                <strong id="serviceStatus">Loading...</strong>
+            </div>
         </section>
 
-        <section class="status-card">
-            <h2>Service Status</h2>
-            <p id="serviceStatus">Loading...</p>
+        <section class="update-card" id="updateCard" aria-label="Data refresh status">
+            <div class="update-content">
+                <span class="dot" aria-hidden="true"></span>
+                <div class="update-copy">
+                    <p class="updated-label" id="updatedAt" aria-live="polite">Waiting for first update</p>
+                    <p class="connection-detail" id="connectionDetail">Connecting to station data</p>
+                </div>
+                <button id="refreshButton" type="button">Refresh now</button>
+            </div>
+            <div class="progress-track" aria-hidden="true"><span id="refreshProgress"></span></div>
         </section>
-
-        <section class="updated-card">
-            <h3>Last Updated</h3>
-            <p id="updatedAt">Loading...</p>
-        </section>
-
-        <p id="connectionStatus">Connecting to database...</p>
-
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="script.js"></script>
-
 </body>
 </html>
